@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('over_spins', function (Blueprint $table) {
             $table->id();
+            $table->string('jenis');
+            $table->string('rencana');
+            $table->string('realisasi');
+            $table->string('persentase');
+            $table->enum('status', ['pending', 'verified'])->default('pending');
             $table->timestamps();
         });
     }
