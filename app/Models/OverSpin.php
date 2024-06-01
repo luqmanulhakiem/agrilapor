@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class OverSpin extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'jenis',
+        'rencana',
+        'realisasi',
+        'persentase',
+        'status',
+    ];
 }
