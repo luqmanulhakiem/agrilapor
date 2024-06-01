@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('persentase');
             $table->enum('status', ['pending', 'verified'])->default('pending');
             $table->timestamps();
+            //test saja
+            //cobas
         });
     }
 
