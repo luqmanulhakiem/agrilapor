@@ -8,3 +8,4 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('halaman.Dashboard.index');
 });
+//remove
