@@ -34,7 +34,7 @@
               <li class="{{ Request::is(['tanam/index', 'tanam/create']) ? 'active' : '' }}"><a href="{{route('tanam.index')}}"><i class="fa fa-circle-o"></i> Tanam</a></li>
             </ul>
           </li>    
-          <li class="{{ Request::is(['sulaman/*']) ? 'active' : '' }} treeview">
+          <li class="{{ Request::is(['sulaman/*', 'babat/*', 'dangir/*']) ? 'active' : '' }} treeview">
             <a href="#">
               <i class="fa fa-wrench"></i> <span>Pemeliharaan</span>
               <span class="pull-right-container">
@@ -43,8 +43,8 @@
             </a>
             <ul class="treeview-menu">
               <li class="{{ Request::is(['sulaman/index', 'sulaman/create']) ? 'active' : '' }}"><a href="{{route('sulaman.index')}}"><i class="fa fa-circle-o"></i> Sulaman</a></li>
-              <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Babat</a></li>
-              <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Dangir</a></li>
+              <li class="{{ Request::is(['babat/index', 'babat/create']) ? 'active' : '' }}"><a href="{{route('babat.index')}}"><i class="fa fa-circle-o"></i> Babat</a></li>
+              <li class="{{ Request::is(['dangir/index', 'dangir/create']) ? 'active' : '' }}"><a href="{{route('dangir.index')}}"><i class="fa fa-circle-o"></i> Dangir</a></li>
             </ul>
           </li>    
         @endif
@@ -164,7 +164,7 @@
               <li class="{{ Request::is('sulaman/rekap-bulanan/*') ? 'active' : '' }}"><a href="{{route('sulaman.bulanan', ["bulan" => $month, 'tahun' => $year])}}"><i class="fa fa-circle-o"></i> Rekap Bulanan</a></li>
             </ul>
           </li>  
-          <li class="treeview">
+          <li class="{{ Request::is('babat/*') ? 'active' : '' }} treeview">
             <a href="#">
               <i class="fa fa-archive"></i> <span>Babat</span>
               <span class="pull-right-container">
@@ -172,12 +172,12 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class=""><a href="index.html"><i class="fa fa-circle-o"></i> Verifikasi</a></li>
-              <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Rekap Harian</a></li>
-              <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Rekap Bulanan</a></li>
+              <li class="{{ Request::is(['babat/verifikasi', 'babat/create', 'babat/edit/*']) ? 'active' : '' }}"><a href="{{route('babat.verifikasi')}}"><i class="fa fa-circle-o"></i> Verifikasi</a></li>
+              <li class="{{ Request::is('babat/rekap-harian/*') ? 'active' : '' }}"><a href="{{route('babat.harian', ["tanggal" => $today])}}"><i class="fa fa-circle-o"></i> Rekap Harian</a></li>
+              <li class="{{ Request::is('babat/rekap-bulanan/*') ? 'active' : '' }}"><a href="{{route('babat.bulanan', ["bulan" => $month, 'tahun' => $year])}}"><i class="fa fa-circle-o"></i> Rekap Bulanan</a></li>
             </ul>
           </li>  
-          <li class="treeview">
+          <li class="{{ Request::is('dangir/*') ? 'active' : '' }} treeview">
             <a href="#">
               <i class="fa fa-archive"></i> <span>Dangir</span>
               <span class="pull-right-container">
@@ -185,9 +185,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class=""><a href="index.html"><i class="fa fa-circle-o"></i> Verifikasi</a></li>
-              <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Rekap Harian</a></li>
-              <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Rekap Bulanan</a></li>
+              <li class="{{ Request::is(['dangir/verifikasi', 'dangir/create', 'dangir/edit/*']) ? 'active' : '' }}"><a href="{{route('dangir.verifikasi')}}"><i class="fa fa-circle-o"></i> Verifikasi</a></li>
+              <li class="{{ Request::is('dangir/rekap-harian/*') ? 'active' : '' }}"><a href="{{route('dangir.harian', ["tanggal" => $today])}}"><i class="fa fa-circle-o"></i> Rekap Harian</a></li>
+              <li class="{{ Request::is('dangir/rekap-bulanan/*') ? 'active' : '' }}"><a href="{{route('dangir.bulanan', ["bulan" => $month, 'tahun' => $year])}}"><i class="fa fa-circle-o"></i> Rekap Bulanan</a></li>
             </ul>
           </li>  
           <li class="header">Data</li>
