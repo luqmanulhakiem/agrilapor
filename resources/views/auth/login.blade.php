@@ -36,6 +36,13 @@
 
     <form action="{{route('login.request')}}" method="post">
       @csrf
+      @if ($errors->any())
+            <div class="pt-4 pb-2">
+              @foreach ($errors->all() as $error)
+                <p class="text-center small">{{ $error }}</p>
+              @endforeach
+            </div>
+          @endif
       <div class="form-group has-feedback">
         <input type="text" class="form-control" name="username" placeholder="Username">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
