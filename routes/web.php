@@ -3,6 +3,7 @@
 use App\Http\Controllers\AcirController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BibitController;
+use App\Http\Controllers\LubangTanamController;
 use App\Http\Controllers\OperAreaController;
 use App\Http\Controllers\OverSpinController;
 use App\Http\Controllers\TaburBenihController;
@@ -108,6 +109,23 @@ Route::group(['middleware' => ['auth']], function (){
             Route::get('edit/{id}', 'edit')->name('acir.edit');
             Route::post('update/{id}', 'update')->name('acir.update');
             Route::get('destroy/{id}', 'destroy')->name('acir.destroy');
+        });
+    });
+    // Lubang Tanam
+    Route::controller(LubangTanamController::class)->group(function (){
+        Route::prefix('lubang-tanam')->group(function () {
+            Route::get('index', 'index')->name('lubangtanam.index');
+            Route::get('verifikasi', 'verifikasi')->name('lubangtanam.verifikasi');
+            Route::get('rekap-harian/{tanggal}', 'harian')->name('lubangtanam.harian');
+            Route::get('download-harian/{tanggal}', 'downloadHarian')->name('lubangtanam.harian.download');
+            Route::get('rekap-bulanan/{bulan}/{tahun}', 'bulanan')->name('lubangtanam.bulanan');
+            Route::get('download-bulanan/{bulan}/{tahun}', 'downloadBulanan')->name('lubangtanam.bulanan.download');
+            Route::get('create', 'create')->name('lubangtanam.create');
+            Route::post('store', 'store')->name('lubangtanam.store');
+            Route::get('status/{id}', 'status')->name('lubangtanam.status');
+            Route::get('edit/{id}', 'edit')->name('lubangtanam.edit');
+            Route::post('update/{id}', 'update')->name('lubangtanam.update');
+            Route::get('destroy/{id}', 'destroy')->name('lubangtanam.destroy');
         });
     });
 });
