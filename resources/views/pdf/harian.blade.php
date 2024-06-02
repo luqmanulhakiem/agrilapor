@@ -42,7 +42,7 @@
             </tr>
             <tr>
                 <th>Tanggal</th>
-                <th>202020</th>
+                <th>{{$today}}</th>
             </tr>
         </thead>
     </table>
@@ -58,15 +58,22 @@
             </tr>
         </thead>
         <tbody>
-            <!-- @foreach ($records as $index => $record) -->
-                <!-- <tr>
-                    <td>{{ $index + 1 }}</td>
-                    <td>{{ $record->jenis }}</td>
-                    <td>{{ $record->rencana }}</td>
-                    <td>{{ $record->realisasi }}</td>
-                    <td>{{ number_format(($record->realisasi / $record->rencana) * 100, 2) }}%</td>
-                </tr> -->
-            <!-- @endforeach -->
+            @if (count($data) > 0)
+            <?php $num = 1 ?>
+                @foreach ($data as $item)
+                    <tr>
+                        <td>{{ $num++ }}</td>
+                        <td>{{ $item->jenis }}</td>
+                        <td>{{ $item->rencana }}</td>
+                        <td>{{ $item->realisasi }}</td>
+                        <td>{{ $item->persentase }}%</td>
+                    </tr>
+                @endforeach
+            @else
+            <tr>
+                <td colspan="5">Tidak ada data</td>
+            </tr>
+            @endif
         </tbody>
     </table>
 

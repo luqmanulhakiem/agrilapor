@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TambahDataRequest;
 use App\Models\TaburBenih;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\DomPDF\PDF as DomPDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class TaburBenihController extends Controller
 {
@@ -31,12 +34,30 @@ class TaburBenihController extends Controller
 
         return view('halaman.TaburBenih.rekap', compact('data', 'today'));
     }
+    public function downloadHarian(string $tanggal){
+        $today = $tanggal;
+        
+        $data = TaburBenih::where('status', 'verified')->whereDate('created_at', $tanggal)->latest()->get();
+        $nama = 'Laporan Harian-' . $tanggal . '.pdf';
+
+        $pdf = PDF::loadView('pdf.harian', ['today' => $today, 'data' => $data]); //i want send $data to $html
+        return $pdf->download($nama);
+    }
 
     public function bulanan(string $bulan, string $tahun){
 
         $data = TaburBenih::where('status', 'verified')->whereMonth('created_at', $bulan)->whereYear('created_at', $tahun)->latest()->paginate(50);
 
         return view('halaman.TaburBenih.rekap', compact('data', 'bulan', 'tahun'));
+    }
+
+    public function downloadBulanan(string $bulan, string $tahun){
+        $data = TaburBenih::where('status', 'verified')->whereMonth('created_at', $bulan)->whereYear('created_at', $tahun)->latest()->paginate(50);
+        
+        $nama = 'Laporan Bulanan-' . $bulan . '-' . $tahun . '.pdf';
+
+        $pdf = PDF::loadView('pdf.bulanan', ['bulan' => $bulan, 'data' => $data, 'tahun' => $tahun]);
+        return $pdf->download($nama);
     }
 
     /**

@@ -13,7 +13,20 @@
       </h1>
       <br>
       <ol class="breadcrumb">
-        <a href="{{route('taburbenih.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> Download Laporan</a>
+        @if (Request::is('tabur-benih/rekap-bulanan/*'))
+          <a  
+          onclick="this.href='/tabur-benih/download-bulanan/' + document.getElementById('bulan').value + 
+          '/' + document.getElementById('tahun').value; this.target='_blank'" 
+          class="btn btn-success"><i class="fa fa-plus"></i> 
+            Download Laporan
+          </a>
+        @else
+          <a  
+          onclick="this.href='/tabur-benih/download-harian/'+ document.getElementById('tanggal').value; this.target='_blank'" 
+          class="btn btn-success"><i class="fa fa-plus"></i> 
+            Download Laporan
+          </a>
+        @endif
       </ol>
     </section>
 
