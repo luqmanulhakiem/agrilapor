@@ -6,6 +6,7 @@ use App\Http\Controllers\BibitController;
 use App\Http\Controllers\LubangTanamController;
 use App\Http\Controllers\OperAreaController;
 use App\Http\Controllers\OverSpinController;
+use App\Http\Controllers\SulamanController;
 use App\Http\Controllers\TaburBenihController;
 use App\Http\Controllers\TanamController;
 use Illuminate\Support\Facades\Auth;
@@ -144,6 +145,23 @@ Route::group(['middleware' => ['auth']], function (){
             Route::get('edit/{id}', 'edit')->name('tanam.edit');
             Route::post('update/{id}', 'update')->name('tanam.update');
             Route::get('destroy/{id}', 'destroy')->name('tanam.destroy');
+        });
+    });
+    // Sulaman
+    Route::controller(SulamanController::class)->group(function (){
+        Route::prefix('sulaman')->group(function () {
+            Route::get('index', 'index')->name('sulaman.index');
+            Route::get('verifikasi', 'verifikasi')->name('sulaman.verifikasi');
+            Route::get('rekap-harian/{tanggal}', 'harian')->name('sulaman.harian');
+            Route::get('download-harian/{tanggal}', 'downloadHarian')->name('sulaman.harian.download');
+            Route::get('rekap-bulanan/{bulan}/{tahun}', 'bulanan')->name('sulaman.bulanan');
+            Route::get('download-bulanan/{bulan}/{tahun}', 'downloadBulanan')->name('sulaman.bulanan.download');
+            Route::get('create', 'create')->name('sulaman.create');
+            Route::post('store', 'store')->name('sulaman.store');
+            Route::get('status/{id}', 'status')->name('sulaman.status');
+            Route::get('edit/{id}', 'edit')->name('sulaman.edit');
+            Route::post('update/{id}', 'update')->name('sulaman.update');
+            Route::get('destroy/{id}', 'destroy')->name('sulaman.destroy');
         });
     });
 });
