@@ -40,9 +40,9 @@
                 <tbody>
                     @if (count($data) > 0)
                         <?php $num = 1 ?>
+                        @foreach ($data as $item)
                         <tr>
                             <td>{{$num++}}</td>
-                            @foreach ($data as $item)
                                 <td>{{$item->jenis}}</td>
                                 <td>{{$item->rencana}}</td>
                                 <td>{{$item->realisasi}}</td>
@@ -68,8 +68,8 @@
                                         <span class="badge bg-yellow">{{$item->status}}</span>
                                     @endif
                                 </td>
-                            @endforeach
-                        </tr>
+                            </tr>
+                        @endforeach
                     @else
                         <tr>
                             <td colspan="7" class="text-center">Tidak ada item</td>
