@@ -5,10 +5,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    if (Auth::user()->id != null) {
+    if (Auth::user() != null) {
         return redirect()->route('dashboard');
+    }else{
+        return view('auth.login');
     }
-    return view('auth.login');
 })->name('login');
 Route::post('/login-request', [AuthController::class, 'login'])->name('login.request');
 
