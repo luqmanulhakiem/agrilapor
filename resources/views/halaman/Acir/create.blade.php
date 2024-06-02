@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Tambah Data Bibit
+        Tambah Data Acir
       </h1>
     </section>
 
@@ -21,7 +21,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="{{route('bibit.store')}}" method="POST">
+            <form role="form" action="{{route('acir.store')}}" method="POST">
                 @csrf
                 @if ($errors->any())
                     <div class="pt-4 pb-2">

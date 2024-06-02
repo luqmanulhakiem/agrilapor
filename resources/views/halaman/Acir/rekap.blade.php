@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        @if (Request::is('bibit/rekap-bulanan/*'))
+        @if (Request::is('acir/rekap-bulanan/*'))
           Rekap Bulanan Data Bibit
         @else
           Rekap Harian Data Bibit
@@ -13,16 +13,16 @@
       </h1>
       <br>
       <ol class="breadcrumb">
-        @if (Request::is('bibit/rekap-bulanan/*'))
+        @if (Request::is('acir/rekap-bulanan/*'))
           <a  
-          onclick="this.href='/bibit/download-bulanan/' + document.getElementById('bulan').value + 
+          onclick="this.href='/acir/download-bulanan/' + document.getElementById('bulan').value + 
           '/' + document.getElementById('tahun').value; this.target='_blank'" 
           class="btn btn-success"><i class="fa fa-plus"></i> 
             Download Laporan
           </a>
         @else
           <a  
-          onclick="this.href='/bibit/download-harian/'+ document.getElementById('tanggal').value; this.target='_blank'" 
+          onclick="this.href='/acir/download-harian/'+ document.getElementById('tanggal').value; this.target='_blank'" 
           class="btn btn-success"><i class="fa fa-plus"></i> 
             Download Laporan
           </a>
@@ -37,7 +37,7 @@
           <div class="box">
             <div class="box-header">
               <div class="row">
-                @if (Request::is('bibit/rekap-harian/*'))
+                @if (Request::is('acir/rekap-harian/*'))
                   <div class="col-md-2">
                     <div class="form-group mr-2">
                       <label for="label">Filter</label>
@@ -47,7 +47,7 @@
                     <div class="col-md-2">
                       <div class="form-group">
                           <label for="">Lihat</label>
-                          <a href="" onclick="this.href='/bibit/rekap-harian/'+ document.getElementById('tanggal').value " 
+                          <a href="" onclick="this.href='/acir/rekap-harian/'+ document.getElementById('tanggal').value " 
                           class="btn btn-primary col-md-12">
                               Lihat
                           </a>
@@ -55,7 +55,7 @@
                   </div>
                 @endif
 
-                @if (Request::is('bibit/rekap-bulanan/*'))
+                @if (Request::is('acir/rekap-bulanan/*'))
                   <div class="col-md-2">
                     <label for="month">Bulan:</label>
                     <select class="form-control" name="bulan" id="bulan">
@@ -79,7 +79,7 @@
                   <div class="col-md-2">
                     <div class="form-group">
                       <label for="">Lihat</label>
-                      <a onclick="this.href='/bibit/rekap-bulanan/'+ document.getElementById('bulan').value + 
+                      <a onclick="this.href='/acir/rekap-bulanan/'+ document.getElementById('bulan').value + 
                       '/' + document.getElementById('tahun').value " 
                       class="btn btn-primary col-md-12">
                           Lihat
@@ -92,7 +92,7 @@
             </div>
             <div class="box-header with-border">
               <h3 class="box-title">
-                @if (Request::is('bibit/rekap-bulanan/*'))
+                @if (Request::is('acir/rekap-bulanan/*'))
                   Rekap Bulanan Data Bibit
                 @else
                   Rekap Harian Data Bibit
