@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OverSpinController;
 use App\Http\Controllers\TaburBenihController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,23 @@ Route::group(['middleware' => ['auth']], function (){
             Route::get('edit/{id}', 'edit')->name('taburbenih.edit');
             Route::post('update/{id}', 'update')->name('taburbenih.update');
             Route::get('destroy/{id}', 'destroy')->name('taburbenih.destroy');
+        });
+    });
+    // OverSpin
+    Route::controller(OverSpinController::class)->group(function (){
+        Route::prefix('over-spin')->group(function () {
+            Route::get('index', 'index')->name('overspin.index');
+            Route::get('verifikasi', 'verifikasi')->name('overspin.verifikasi');
+            Route::get('rekap-harian/{tanggal}', 'harian')->name('overspin.harian');
+            Route::get('download-harian/{tanggal}', 'downloadHarian')->name('overspin.harian.download');
+            Route::get('rekap-bulanan/{bulan}/{tahun}', 'bulanan')->name('overspin.bulanan');
+            Route::get('download-bulanan/{bulan}/{tahun}', 'downloadBulanan')->name('overspin.bulanan.download');
+            Route::get('create', 'create')->name('overspin.create');
+            Route::post('store', 'store')->name('overspin.store');
+            Route::get('status/{id}', 'status')->name('overspin.status');
+            Route::get('edit/{id}', 'edit')->name('overspin.edit');
+            Route::post('update/{id}', 'update')->name('overspin.update');
+            Route::get('destroy/{id}', 'destroy')->name('overspin.destroy');
         });
     });
 });
