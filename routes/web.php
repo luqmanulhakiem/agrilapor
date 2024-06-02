@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OperAreaController;
 use App\Http\Controllers\OverSpinController;
 use App\Http\Controllers\TaburBenihController;
 use Illuminate\Support\Facades\Auth;
@@ -54,6 +55,23 @@ Route::group(['middleware' => ['auth']], function (){
             Route::get('edit/{id}', 'edit')->name('overspin.edit');
             Route::post('update/{id}', 'update')->name('overspin.update');
             Route::get('destroy/{id}', 'destroy')->name('overspin.destroy');
+        });
+    });
+    // OperArea
+    Route::controller(OperAreaController::class)->group(function (){
+        Route::prefix('oper-area')->group(function () {
+            Route::get('index', 'index')->name('operarea.index');
+            Route::get('verifikasi', 'verifikasi')->name('operarea.verifikasi');
+            Route::get('rekap-harian/{tanggal}', 'harian')->name('operarea.harian');
+            Route::get('download-harian/{tanggal}', 'downloadHarian')->name('operarea.harian.download');
+            Route::get('rekap-bulanan/{bulan}/{tahun}', 'bulanan')->name('operarea.bulanan');
+            Route::get('download-bulanan/{bulan}/{tahun}', 'downloadBulanan')->name('operarea.bulanan.download');
+            Route::get('create', 'create')->name('operarea.create');
+            Route::post('store', 'store')->name('operarea.store');
+            Route::get('status/{id}', 'status')->name('operarea.status');
+            Route::get('edit/{id}', 'edit')->name('operarea.edit');
+            Route::post('update/{id}', 'update')->name('operarea.update');
+            Route::get('destroy/{id}', 'destroy')->name('operarea.destroy');
         });
     });
 });
