@@ -34,7 +34,7 @@
               <li class="{{ Request::is(['tanam/index', 'tanam/create']) ? 'active' : '' }}"><a href="{{route('tanam.index')}}"><i class="fa fa-circle-o"></i> Tanam</a></li>
             </ul>
           </li>    
-          <li class="treeview">
+          <li class="{{ Request::is(['sulaman/*']) ? 'active' : '' }} treeview">
             <a href="#">
               <i class="fa fa-wrench"></i> <span>Pemeliharaan</span>
               <span class="pull-right-container">
@@ -42,7 +42,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class=""><a href="index.html"><i class="fa fa-circle-o"></i> Sulaman</a></li>
+              <li class="{{ Request::is(['sulaman/index', 'sulaman/create']) ? 'active' : '' }}"><a href="{{route('sulaman.index')}}"><i class="fa fa-circle-o"></i> Sulaman</a></li>
               <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Babat</a></li>
               <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Dangir</a></li>
             </ul>
@@ -151,7 +151,7 @@
             </ul>
           </li>  
           <li class="header">Pemeliharaan</li>
-          <li class="treeview">
+          <li class="{{ Request::is('sulaman/*') ? 'active' : '' }} treeview">
             <a href="#">
               <i class="fa fa-archive"></i> <span>Sulaman</span>
               <span class="pull-right-container">
@@ -159,9 +159,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class=""><a href="index.html"><i class="fa fa-circle-o"></i> Verifikasi</a></li>
-              <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Rekap Harian</a></li>
-              <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Rekap Bulanan</a></li>
+              <li class="{{ Request::is(['sulaman/verifikasi', 'sulaman/create', 'sulaman/edit/*']) ? 'active' : '' }}"><a href="{{route('sulaman.verifikasi')}}"><i class="fa fa-circle-o"></i> Verifikasi</a></li>
+              <li class="{{ Request::is('sulaman/rekap-harian/*') ? 'active' : '' }}"><a href="{{route('sulaman.harian', ["tanggal" => $today])}}"><i class="fa fa-circle-o"></i> Rekap Harian</a></li>
+              <li class="{{ Request::is('sulaman/rekap-bulanan/*') ? 'active' : '' }}"><a href="{{route('sulaman.bulanan', ["bulan" => $month, 'tahun' => $year])}}"><i class="fa fa-circle-o"></i> Rekap Bulanan</a></li>
             </ul>
           </li>  
           <li class="treeview">
