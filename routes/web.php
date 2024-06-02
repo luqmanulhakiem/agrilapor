@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BabatController;
 use App\Http\Controllers\BibitController;
 use App\Http\Controllers\DangirController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LubangTanamController;
 use App\Http\Controllers\OperAreaController;
 use App\Http\Controllers\OverSpinController;
@@ -27,9 +28,7 @@ Route::post('/login-request', [AuthController::class, 'login'])->name('login.req
 Route::group(['middleware' => ['auth']], function (){
     Route::get('/logout-request', [AuthController::class, 'logout'])->name('logout.request');
     // Dashboard
-    Route::get('/dashboard', function () {
-        return view('halaman.Dashboard.index');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Tabur Benih
     Route::controller(TaburBenihController::class)->group(function (){
