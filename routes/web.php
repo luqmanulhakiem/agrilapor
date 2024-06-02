@@ -11,6 +11,7 @@ use App\Http\Controllers\OverSpinController;
 use App\Http\Controllers\SulamanController;
 use App\Http\Controllers\TaburBenihController;
 use App\Http\Controllers\TanamController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -198,6 +199,19 @@ Route::group(['middleware' => ['auth']], function (){
             Route::get('edit/{id}', 'edit')->name('dangir.edit');
             Route::post('update/{id}', 'update')->name('dangir.update');
             Route::get('destroy/{id}', 'destroy')->name('dangir.destroy');
+        });
+    });
+    // User
+    Route::controller(UserController::class)->group(function (){
+        Route::prefix('data-user')->group(function () {
+            Route::get('index', 'index')->name('user.index');
+            Route::get('create', 'create')->name('user.create');
+            Route::post('store', 'store')->name('user.store');
+            Route::get('edit/{id}', 'edit')->name('user.edit');
+            Route::get('edit-password/{id}', 'editPass')->name('user.edit.password');
+            Route::post('update/{id}', 'update')->name('user.update');
+            Route::post('update-password/{id}', 'updatePass')->name('user.update.password');
+            Route::get('destroy/{id}', 'destroy')->name('user.destroy');
         });
     });
 });

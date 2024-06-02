@@ -4,7 +4,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="{{ Request::is('dashboard') ? 'active' : '' }}"><a href="#"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
+        <li class="{{ Request::is('dashboard') ? 'active' : '' }}"><a href="{{route('dashboard')}}"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
 
         @if (Auth::user()->role == 'user')
           <li class="{{ Request::is(['tabur-benih/*', 'over-spin/*', 'oper-area/*']) ? 'active' : '' }} treeview">
@@ -191,7 +191,7 @@
             </ul>
           </li>  
           <li class="header">Data</li>
-          <li class="{{ Request::is('dashboard') ? 'active' : '' }}"><a href="#"><i class="fa fa-users"></i> <span>User</span></a></li>
+          <li class="{{ Request::is(['data-user/*']) ? 'active' : '' }}"><a href="{{route('user.index')}}"><i class="fa fa-users"></i> <span>User</span></a></li>
         @endif
       </ul>
     </section>
