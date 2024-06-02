@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AcirController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BabatController;
 use App\Http\Controllers\BibitController;
+use App\Http\Controllers\DangirController;
 use App\Http\Controllers\LubangTanamController;
 use App\Http\Controllers\OperAreaController;
 use App\Http\Controllers\OverSpinController;
@@ -162,6 +164,40 @@ Route::group(['middleware' => ['auth']], function (){
             Route::get('edit/{id}', 'edit')->name('sulaman.edit');
             Route::post('update/{id}', 'update')->name('sulaman.update');
             Route::get('destroy/{id}', 'destroy')->name('sulaman.destroy');
+        });
+    });
+    // Babat
+    Route::controller(BabatController::class)->group(function (){
+        Route::prefix('babat')->group(function () {
+            Route::get('index', 'index')->name('babat.index');
+            Route::get('verifikasi', 'verifikasi')->name('babat.verifikasi');
+            Route::get('rekap-harian/{tanggal}', 'harian')->name('babat.harian');
+            Route::get('download-harian/{tanggal}', 'downloadHarian')->name('babat.harian.download');
+            Route::get('rekap-bulanan/{bulan}/{tahun}', 'bulanan')->name('babat.bulanan');
+            Route::get('download-bulanan/{bulan}/{tahun}', 'downloadBulanan')->name('babat.bulanan.download');
+            Route::get('create', 'create')->name('babat.create');
+            Route::post('store', 'store')->name('babat.store');
+            Route::get('status/{id}', 'status')->name('babat.status');
+            Route::get('edit/{id}', 'edit')->name('babat.edit');
+            Route::post('update/{id}', 'update')->name('babat.update');
+            Route::get('destroy/{id}', 'destroy')->name('babat.destroy');
+        });
+    });
+    // Dangir
+    Route::controller(DangirController::class)->group(function (){
+        Route::prefix('dangir')->group(function () {
+            Route::get('index', 'index')->name('dangir.index');
+            Route::get('verifikasi', 'verifikasi')->name('dangir.verifikasi');
+            Route::get('rekap-harian/{tanggal}', 'harian')->name('dangir.harian');
+            Route::get('download-harian/{tanggal}', 'downloadHarian')->name('dangir.harian.download');
+            Route::get('rekap-bulanan/{bulan}/{tahun}', 'bulanan')->name('dangir.bulanan');
+            Route::get('download-bulanan/{bulan}/{tahun}', 'downloadBulanan')->name('dangir.bulanan.download');
+            Route::get('create', 'create')->name('dangir.create');
+            Route::post('store', 'store')->name('dangir.store');
+            Route::get('status/{id}', 'status')->name('dangir.status');
+            Route::get('edit/{id}', 'edit')->name('dangir.edit');
+            Route::post('update/{id}', 'update')->name('dangir.update');
+            Route::get('destroy/{id}', 'destroy')->name('dangir.destroy');
         });
     });
 });
