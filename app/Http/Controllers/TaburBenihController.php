@@ -24,6 +24,14 @@ class TaburBenihController extends Controller
         return view('halaman.TaburBenih.index', compact('data'));
     }
 
+    public function harian(string $tanggal){
+        $today = $tanggal;
+
+        $data = TaburBenih::where('status', 'verified')->whereDate('created_at', $tanggal)->latest()->paginate(50);
+
+        return view('halaman.TaburBenih.rekap', compact('data', 'today'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -66,7 +74,7 @@ class TaburBenihController extends Controller
     public function edit(string $id)
     {
         $data = TaburBenih::findorfail($id);
-        
+
         return view('halaman.TaburBenih.edit', compact('data'));
     }
 

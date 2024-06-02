@@ -15,7 +15,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="{{ Request::is('tabur-benih/*') ? 'active' : '' }}"><a href="{{route('taburbenih.index')}}"><i class="fa fa-circle-o"></i> Tabur Benih</a></li>
+              <li class="{{ Request::is(['tabur-benih/index', 'tabur-benih/create']) ? 'active' : '' }}"><a href="{{route('taburbenih.index')}}"><i class="fa fa-circle-o"></i> Tabur Benih</a></li>
               <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Over Spin</a></li>
               <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Oper Area</a></li>
             </ul>
@@ -60,8 +60,12 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="{{ Request::is('tabur-benih/*') ? 'active' : '' }}"><a href="{{route('taburbenih.verifikasi')}}"><i class="fa fa-circle-o"></i> Verifikasi</a></li>
-              <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Rekap Harian</a></li>
+              <li class="{{ Request::is(['tabur-benih/verifikasi', 'tabur-benih/create', 'tabur-benih/edit/*']) ? 'active' : '' }}"><a href="{{route('taburbenih.verifikasi')}}"><i class="fa fa-circle-o"></i> Verifikasi</a></li>
+              <?php 
+                $carbon = \Illuminate\Support\Carbon::now(); 
+                $today = $carbon->format('Y-m-d');
+              ?>
+              <li class="{{ Request::is('tabur-benih/rekap-harian/*') ? 'active' : '' }}"><a href="{{route('taburbenih.harian', ["tanggal" => $today])}}"><i class="fa fa-circle-o"></i> Rekap Harian</a></li>
               <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Rekap Bulanan</a></li>
             </ul>
           </li>  
