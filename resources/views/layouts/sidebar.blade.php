@@ -52,7 +52,7 @@
         {{-- Admin --}}
         @if (Auth::user()->role == 'admin')
           <li class="header">Persemaian</li>
-          <li class="treeview">
+          <li class="{{ Request::is('tabur-benih/*') ? 'active' : '' }} treeview">
             <a href="#">
               <i class="fa fa-archive"></i> <span>Tabur Benih</span>
               <span class="pull-right-container">
@@ -60,7 +60,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class=""><a href="index.html"><i class="fa fa-circle-o"></i> Verifikasi</a></li>
+              <li class="{{ Request::is('tabur-benih/*') ? 'active' : '' }}"><a href="{{route('taburbenih.verifikasi')}}"><i class="fa fa-circle-o"></i> Verifikasi</a></li>
               <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Rekap Harian</a></li>
               <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Rekap Bulanan</a></li>
             </ul>

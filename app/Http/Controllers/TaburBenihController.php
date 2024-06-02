@@ -18,6 +18,12 @@ class TaburBenihController extends Controller
         return view('halaman.TaburBenih.index', compact('data'));
     }
 
+    public function verifikasi(){
+        $data = TaburBenih::where('status', 'pending')->latest()->paginate(50);
+
+        return view('halaman.TaburBenih.index', compact('data'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
