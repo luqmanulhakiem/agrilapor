@@ -21,24 +21,31 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="" method="POST">
+            <form role="form" action="{{route('taburbenih.store')}}" method="POST">
                 @csrf
+                @if ($errors->any())
+                    <div class="pt-4 pb-2">
+                    @foreach ($errors->all() as $error)
+                        <p class="text-center small">{{ $error }}</p>
+                    @endforeach
+                    </div>
+                @endif
               <div class="box-body">
                 <div class="form-group">
                   <label>Jenis</label>
-                  <input type="text" class="form-control" placeholder="Masukkan jenis">
+                  <input type="text" class="form-control" name="jenis" placeholder="Masukkan jenis" required>
                 </div>
                 <div class="form-group">
                   <label>Rencana</label>
-                  <input type="text" class="form-control" placeholder="Masukkan Rencana">
+                  <input type="text" class="form-control" name="rencana" placeholder="Masukkan Rencana" required>
                 </div>
                 <div class="form-group">
                   <label>Realisasi</label>
-                  <input type="text" class="form-control" placeholder="Masukkan Realisasi">
+                  <input type="text" class="form-control" name="realisasi" placeholder="Masukkan Realisasi" required>
                 </div>
                 <div class="form-group">
                   <label>Persentase</label>
-                  <input type="text" class="form-control" placeholder="Masukkan Persentase">
+                  <input type="number" class="form-control" name="persentase" placeholder="Masukkan Persentase" required>
                 </div>
               </div>
               <!-- /.box-body -->
