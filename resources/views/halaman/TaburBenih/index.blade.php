@@ -43,7 +43,7 @@
                                 <td>{{$item->jenis}}</td>
                                 <td>{{$item->rencana}}</td>
                                 <td>{{$item->realisasi}}</td>
-                                <td><span class="badge bg-red">{{$item->persentase}}</span></td>
+                                <td><span class="badge bg-red">{{$item->persentase}}%</span></td>
                                 <td class="text-center">
                                     @if (Auth::user()->role == 'admin')
                                         <div class="btn-group">
