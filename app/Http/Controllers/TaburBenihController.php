@@ -63,24 +63,34 @@ class TaburBenihController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TaburBenih $taburBenih)
+    public function edit(string $id)
     {
-        //
+        $data = TaburBenih::findorfail($id);
+        
+        return view('halaman.TaburBenih.edit', compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TaburBenih $taburBenih)
+    public function update(TambahDataRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+
+        $find = TaburBenih::findorfail($id);
+        $find->update($data);
+
+        return redirect()->route('taburbenih.verifikasi');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TaburBenih $taburBenih)
+    public function destroy(string $id)
     {
-        //
+        $data = TaburBenih::findorfail($id);
+        $data->delete();
+
+        return redirect()->route('taburbenih.verifikasi');
     }
 }
