@@ -5,7 +5,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Rekap Harian Data Tabur Benih
+        @if (Request::is('tabur-benih/rekap-bulanan/*'))
+          Rekap Bulanan Data Tabur Benih
+        @else
+          Rekap Harian Data Tabur Benih
+        @endif
       </h1>
       <br>
       <ol class="breadcrumb">
@@ -74,9 +78,14 @@
               </div>
             </div>
             <div class="box-header with-border">
-                <h3 class="box-title">Rekap Harian Data Tabur Benih</h3>
-            
-              </div>
+              <h3 class="box-title">
+                @if (Request::is('tabur-benih/rekap-bulanan/*'))
+                  Rekap Bulanan Data Tabur Benih
+                @else
+                  Rekap Harian Data Tabur Benih
+                @endif
+              </h3>
+            </div>
             
             <!-- /.box-header -->
             <div class="box-body">
