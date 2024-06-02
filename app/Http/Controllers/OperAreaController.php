@@ -6,7 +6,7 @@ use App\Http\Requests\TambahDataRequest;
 use App\Models\OperArea;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-
+use Illuminate\Support\Facades\Auth;
 
 class OperAreaController extends Controller
 {
@@ -75,8 +75,11 @@ class OperAreaController extends Controller
         $data = $request->validated();
 
         OperArea::create($data);
-
-        return redirect()->route('operarea.index');
+        if (Auth::user()->role == 'user') {
+            return redirect()->route('operarea.index');
+        } else {
+            return redirect()->route('operarea.verifikasi');
+        }
     }
 
     public function status(string $id){

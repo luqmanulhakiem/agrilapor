@@ -7,6 +7,7 @@ use App\Models\TaburBenih;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Barryvdh\DomPDF\PDF as DomPDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 
 class TaburBenihController extends Controller
@@ -77,7 +78,11 @@ class TaburBenihController extends Controller
 
         TaburBenih::create($data);
 
-        return redirect()->route('taburbenih.index');
+        if (Auth::user()->role == 'user') {
+            return redirect()->route('taburbenih.index');
+        } else {
+            return redirect()->route('taburbenih.verifikasi');
+        }
     }
 
     public function status(string $id){

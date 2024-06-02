@@ -6,7 +6,7 @@ use App\Http\Requests\TambahDataRequest;
 use App\Models\LubangTanam;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-
+use Illuminate\Support\Facades\Auth;
 
 class LubangTanamController extends Controller
 {
@@ -76,7 +76,11 @@ class LubangTanamController extends Controller
 
         LubangTanam::create($data);
 
-        return redirect()->route('lubangtanam.index');
+        if (Auth::user()->role == 'user') {
+            return redirect()->route('lubangtanam.index');
+        } else {
+            return redirect()->route('lubangtanam.verifikasi');
+        }
     }
 
     public function status(string $id){

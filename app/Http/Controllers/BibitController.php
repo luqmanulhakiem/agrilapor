@@ -6,6 +6,7 @@ use App\Http\Requests\TambahDataRequest;
 use App\Models\Bibit;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BibitController extends Controller
 {
@@ -75,7 +76,13 @@ class BibitController extends Controller
 
         Bibit::create($data);
 
-        return redirect()->route('bibit.index');
+        if (Auth::user()->role == 'user') {
+            return redirect()->route('bibit.index');
+        } else {
+            return redirect()->route('bibit.verifikasi');
+        }
+        
+
     }
 
     public function status(string $id){

@@ -6,7 +6,7 @@ use App\Http\Requests\TambahDataRequest;
 use App\Models\Acir;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-
+use Illuminate\Support\Facades\Auth;
 
 class AcirController extends Controller
 {
@@ -76,7 +76,13 @@ class AcirController extends Controller
 
         Acir::create($data);
 
-        return redirect()->route('acir.index');
+        if (Auth::user()->role == 'user') {
+            return redirect()->route('acir.index');
+        } else {
+            return redirect()->route('acir.verifikasi');
+        }
+        
+
     }
 
     public function status(string $id){

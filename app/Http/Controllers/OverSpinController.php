@@ -6,6 +6,7 @@ use App\Http\Requests\TambahDataRequest;
 use App\Models\OverSpin;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OverSpinController extends Controller
 {
@@ -75,7 +76,11 @@ class OverSpinController extends Controller
 
         OverSpin::create($data);
 
-        return redirect()->route('overspin.index');
+        if (Auth::user()->role == 'user') {
+            return redirect()->route('overspin.index');
+        } else {
+            return redirect()->route('overspin.verifikasi');
+        }
     }
 
     public function status(string $id){
