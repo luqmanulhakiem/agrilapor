@@ -5,12 +5,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Tabur Benih
+        Data Tabur Benih
       </h1>
+      <br>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Tables</a></li>
-        <li class="active">Tabur Benih</li>
+        <a href="" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
       </ol>
     </section>
 
@@ -20,7 +19,7 @@
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Data Tabur Benih</h3>
+                <h3 class="box-title">Data Tabur Benih</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -39,45 +38,56 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                      <td>1.</td>
-                      <td>Update software</td>
-                      <td>Update software</td>
-                      <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-red">55%</span></td>
-                      @if (Auth::user()->role == 'admin')
-                        <td class="text-center">
-                            <span class="badge bg-yellow">pending</span>
-                        </td>
-                      @endif
-                      <td class="text-center">
-                        <div class="btn-group">
-                            <a href="" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-                            <a href="" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Hapus</a>
-                            <a href="" class="btn btn-sm btn-success"><i class="fa fa-check"></i> Approve</a>
-                        </div>
-                        <span class="badge bg-yellow">pending</span>
-                      </td>
-                    </tr>
-                    <tr>
-                        <td colspan="7" class="text-center">Tidak ada item</td>
-                    </tr>
+                    @if (count($data) > 0)
+                        <?php $num = 1 ?>
+                        <tr>
+                            <td>{{$num++}}</td>
+                            @foreach ($data as $item)
+                                <td>{{$item->jenis}}</td>
+                                <td>{{$item->rencana}}</td>
+                                <td>{{$item->realisasi}}</td>
+                                <td><span class="badge bg-red">{{$item->persentase}}</span></td>
+                                @if (Auth::user()->role == 'admin')
+                                    <td class="text-center">
+                                        @if ($item->status == 'verified')
+                                            <span class="badge bg-green">{{$item->status}}</span>
+                                        @else
+                                            <span class="badge bg-yellow">{{$item->status}}</span>
+                                        @endif
+                                    </td>
+                                @endif
+                                <td class="text-center">
+                                    @if (Auth::user()->role == 'admin')
+                                        <div class="btn-group">
+                                            <a href="" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Edit</a>
+                                            <a href="" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+                                            <a href="" class="btn btn-sm btn-success"><i class="fa fa-check"></i> Approve</a>
+                                        </div>
+                                    @endif
+                                    @if (Auth::user()->role == 'user')
+                                        <span class="badge bg-yellow">{{$item->status}}</span>
+                                    @endif
+                                </td>
+                            @endforeach
+                        </tr>
+                    @else
+                        <tr>
+                            <td colspan="7" class="text-center">Tidak ada item</td>
+                        </tr>
+                    @endif
                 </tbody>
               </table>
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
-              <ul class="pagination pagination-sm no-margin pull-right">
+                {{$data->links()}}
+              {{-- <ul class="pagination pagination-sm no-margin pull-right">
                 <li><a href="#">&laquo;</a></li>
                 <li><a href="#">1</a></li>
                 <li><a href="#">2</a></li>
                 <li><a href="#">3</a></li>
                 <li><a href="#">&raquo;</a></li>
-              </ul>
+              </ul> --}}
             </div>
           </div>
           <!-- /.box -->
