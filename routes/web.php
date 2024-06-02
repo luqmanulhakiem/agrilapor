@@ -28,6 +28,10 @@ Route::group(['middleware' => ['auth']], function (){
             Route::get('verifikasi', 'verifikasi')->name('taburbenih.verifikasi');
             Route::get('create', 'create')->name('taburbenih.create');
             Route::post('store', 'store')->name('taburbenih.store');
+            Route::get('status/{id}', 'status')->name('taburbenih.status');
+            Route::get('edit/{id}', 'edit')->name('taburbenih.edit');
+            Route::get('update/{id}', 'update')->name('taburbenih.edit');
+            Route::get('destroy/{id}', 'destroy')->name('taburbenih.edit');
         });
     });
 });
