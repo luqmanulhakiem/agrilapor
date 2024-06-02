@@ -9,7 +9,7 @@
       </h1>
       <br>
       <ol class="breadcrumb">
-        <a href="" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+        <a href="{{route('taburbenih.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
       </ol>
     </section>
 

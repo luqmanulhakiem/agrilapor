@@ -22,7 +22,7 @@ class TaburBenihController extends Controller
      */
     public function create()
     {
-        //
+        return view('halaman.TaburBenih.create');
     }
 
     /**
