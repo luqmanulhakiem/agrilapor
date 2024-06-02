@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AcirController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BibitController;
 use App\Http\Controllers\OperAreaController;
@@ -90,6 +91,23 @@ Route::group(['middleware' => ['auth']], function (){
             Route::get('edit/{id}', 'edit')->name('bibit.edit');
             Route::post('update/{id}', 'update')->name('bibit.update');
             Route::get('destroy/{id}', 'destroy')->name('bibit.destroy');
+        });
+    });
+    // Acir
+    Route::controller(AcirController::class)->group(function (){
+        Route::prefix('acir')->group(function () {
+            Route::get('index', 'index')->name('acir.index');
+            Route::get('verifikasi', 'verifikasi')->name('acir.verifikasi');
+            Route::get('rekap-harian/{tanggal}', 'harian')->name('acir.harian');
+            Route::get('download-harian/{tanggal}', 'downloadHarian')->name('acir.harian.download');
+            Route::get('rekap-bulanan/{bulan}/{tahun}', 'bulanan')->name('acir.bulanan');
+            Route::get('download-bulanan/{bulan}/{tahun}', 'downloadBulanan')->name('acir.bulanan.download');
+            Route::get('create', 'create')->name('acir.create');
+            Route::post('store', 'store')->name('acir.store');
+            Route::get('status/{id}', 'status')->name('acir.status');
+            Route::get('edit/{id}', 'edit')->name('acir.edit');
+            Route::post('update/{id}', 'update')->name('acir.update');
+            Route::get('destroy/{id}', 'destroy')->name('acir.destroy');
         });
     });
 });
