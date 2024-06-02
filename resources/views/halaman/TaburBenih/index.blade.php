@@ -59,9 +59,9 @@
                                 <td class="text-center">
                                     @if (Auth::user()->role == 'admin')
                                         <div class="btn-group">
-                                            <a href="" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-                                            <a href="" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Hapus</a>
-                                            <a href="" class="btn btn-sm btn-success"><i class="fa fa-check"></i> Approve</a>
+                                            <a href="{{route('taburbenih.edit', ["id" => $item->id])}}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Edit</a>
+                                            <a href="{{route('taburbenih.destroy', ["id" => $item->id])}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+                                            <a href="{{route('taburbenih.status', ["id" => $item->id])}}" class="btn btn-sm btn-success"><i class="fa fa-check"></i> Approve</a>
                                         </div>
                                     @endif
                                     @if (Auth::user()->role == 'user')

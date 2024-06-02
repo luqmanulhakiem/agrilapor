@@ -30,8 +30,8 @@ Route::group(['middleware' => ['auth']], function (){
             Route::post('store', 'store')->name('taburbenih.store');
             Route::get('status/{id}', 'status')->name('taburbenih.status');
             Route::get('edit/{id}', 'edit')->name('taburbenih.edit');
-            Route::get('update/{id}', 'update')->name('taburbenih.edit');
-            Route::get('destroy/{id}', 'destroy')->name('taburbenih.edit');
+            Route::post('update/{id}', 'update')->name('taburbenih.update');
+            Route::get('destroy/{id}', 'destroy')->name('taburbenih.destroy');
         });
     });
 });
