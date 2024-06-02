@@ -20,7 +20,7 @@
               <li class="{{ Request::is(['oper-area/index', 'oper-area/create']) ? 'active' : '' }}"><a href="{{route('operarea.index')}}"><i class="fa fa-circle-o"></i> Oper Area</a></li>
             </ul>
           </li>    
-          <li class="{{ Request::is(['bibit/*', 'acir/*']) ? 'active' : '' }} treeview">
+          <li class="{{ Request::is(['bibit/*', 'acir/*', 'lubang-tanam/*']) ? 'active' : '' }} treeview">
             <a href="#">
               <i class="fa fa-tree"></i> <span>Tanaman</span>
               <span class="pull-right-container">
@@ -30,7 +30,7 @@
             <ul class="treeview-menu">
               <li class="{{ Request::is(['bibit/index', 'bibit/create']) ? 'active' : '' }}"><a href="{{route('bibit.index')}}"><i class="fa fa-circle-o"></i> Bibit</a></li>
               <li class="{{ Request::is(['acir/index', 'acir/create']) ? 'active' : '' }}"><a href="{{route('acir.index')}}"><i class="fa fa-circle-o"></i> Acir</a></li>
-              <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Lubang Tanam</a></li>
+              <li class="{{ Request::is(['lubang-tanam/index', 'lubang-tanam/create']) ? 'active' : '' }}"><a href="{{route('lubangtanam.index')}}"><i class="fa fa-circle-o"></i> Lubang Tanam</a></li>
               <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Tanam</a></li>
             </ul>
           </li>    
@@ -124,7 +124,7 @@
               <li class="{{ Request::is('acir/rekap-bulanan/*') ? 'active' : '' }}"><a href="{{route('acir.bulanan', ["bulan" => $month, 'tahun' => $year])}}"><i class="fa fa-circle-o"></i> Rekap Bulanan</a></li>
             </ul>
           </li>  
-          <li class="treeview">
+          <li class="{{ Request::is('lubang-tanam/*') ? 'active' : '' }} treeview">
             <a href="#">
               <i class="fa fa-archive"></i> <span>Lubang Tanam</span>
               <span class="pull-right-container">
@@ -132,9 +132,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class=""><a href="index.html"><i class="fa fa-circle-o"></i> Verifikasi</a></li>
-              <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Rekap Harian</a></li>
-              <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Rekap Bulanan</a></li>
+              <li class="{{ Request::is(['lubang-tanam/verifikasi', 'lubang-tanam/create', 'lubang-tanam/edit/*']) ? 'active' : '' }}"><a href="{{route('lubangtanam.verifikasi')}}"><i class="fa fa-circle-o"></i> Verifikasi</a></li>
+              <li class="{{ Request::is('lubang-tanam/rekap-harian/*') ? 'active' : '' }}"><a href="{{route('lubangtanam.harian', ["tanggal" => $today])}}"><i class="fa fa-circle-o"></i> Rekap Harian</a></li>
+              <li class="{{ Request::is('lubang-tanam/rekap-bulanan/*') ? 'active' : '' }}"><a href="{{route('lubangtanam.bulanan', ["bulan" => $month, 'tahun' => $year])}}"><i class="fa fa-circle-o"></i> Rekap Bulanan</a></li>
             </ul>
           </li>  
           <li class="treeview">
