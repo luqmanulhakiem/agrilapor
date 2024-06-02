@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BibitController;
 use App\Http\Controllers\OperAreaController;
 use App\Http\Controllers\OverSpinController;
 use App\Http\Controllers\TaburBenihController;
@@ -72,6 +73,23 @@ Route::group(['middleware' => ['auth']], function (){
             Route::get('edit/{id}', 'edit')->name('operarea.edit');
             Route::post('update/{id}', 'update')->name('operarea.update');
             Route::get('destroy/{id}', 'destroy')->name('operarea.destroy');
+        });
+    });
+    // Bibit
+    Route::controller(BibitController::class)->group(function (){
+        Route::prefix('bibit')->group(function () {
+            Route::get('index', 'index')->name('bibit.index');
+            Route::get('verifikasi', 'verifikasi')->name('bibit.verifikasi');
+            Route::get('rekap-harian/{tanggal}', 'harian')->name('bibit.harian');
+            Route::get('download-harian/{tanggal}', 'downloadHarian')->name('bibit.harian.download');
+            Route::get('rekap-bulanan/{bulan}/{tahun}', 'bulanan')->name('bibit.bulanan');
+            Route::get('download-bulanan/{bulan}/{tahun}', 'downloadBulanan')->name('bibit.bulanan.download');
+            Route::get('create', 'create')->name('bibit.create');
+            Route::post('store', 'store')->name('bibit.store');
+            Route::get('status/{id}', 'status')->name('bibit.status');
+            Route::get('edit/{id}', 'edit')->name('bibit.edit');
+            Route::post('update/{id}', 'update')->name('bibit.update');
+            Route::get('destroy/{id}', 'destroy')->name('bibit.destroy');
         });
     });
 });
