@@ -30,7 +30,6 @@
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
-                
                 <div class="pull-left">
                   <a href="{{route('logout.request')}}" class="btn btn-default btn-flat">Keluar</a>
                 </div>
