@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Edit Data OperArea
+        Edit Data Bibit
       </h1>
     </section>
 
@@ -21,7 +21,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="{{route('operarea.update', ['id' => $data->id])}}" method="POST">
+            <form role="form" action="{{route('bibit.update', ['id' => $data->id])}}" method="POST">
                 @csrf
                 @if ($errors->any())
                     <div class="pt-4 pb-2">

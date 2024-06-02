@@ -20,7 +20,7 @@
               <li class="{{ Request::is(['oper-area/index', 'oper-area/create']) ? 'active' : '' }}"><a href="{{route('operarea.index')}}"><i class="fa fa-circle-o"></i> Oper Area</a></li>
             </ul>
           </li>    
-          <li class="treeview">
+          <li class="{{ Request::is(['bibit/*']) ? 'active' : '' }} treeview">
             <a href="#">
               <i class="fa fa-tree"></i> <span>Tanaman</span>
               <span class="pull-right-container">
@@ -28,7 +28,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class=""><a href="index.html"><i class="fa fa-circle-o"></i> Bibit</a></li>
+              <li class="{{ Request::is(['bibit/index', 'bibit/create']) ? 'active' : '' }}"><a href="{{route('bibit.index')}}"><i class="fa fa-circle-o"></i> Bibit</a></li>
               <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Acir</a></li>
               <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Lubang Tanam</a></li>
               <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Tanam</a></li>
@@ -98,7 +98,7 @@
             </ul>
           </li>  
           <li class="header">Tanaman</li>
-          <li class="treeview">
+          <li class="{{ Request::is('bibit/*') ? 'active' : '' }} treeview">
             <a href="#">
               <i class="fa fa-archive"></i> <span>Bibit</span>
               <span class="pull-right-container">
@@ -106,9 +106,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class=""><a href="index.html"><i class="fa fa-circle-o"></i> Verifikasi</a></li>
-              <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Rekap Harian</a></li>
-              <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Rekap Bulanan</a></li>
+              <li class="{{ Request::is(['bibit/verifikasi', 'bibit/create', 'bibit/edit/*']) ? 'active' : '' }}"><a href="{{route('bibit.verifikasi')}}"><i class="fa fa-circle-o"></i> Verifikasi</a></li>
+              <li class="{{ Request::is('bibit/rekap-harian/*') ? 'active' : '' }}"><a href="{{route('bibit.harian', ["tanggal" => $today])}}"><i class="fa fa-circle-o"></i> Rekap Harian</a></li>
+              <li class="{{ Request::is('bibit/rekap-bulanan/*') ? 'active' : '' }}"><a href="{{route('bibit.bulanan', ["bulan" => $month, 'tahun' => $year])}}"><i class="fa fa-circle-o"></i> Rekap Bulanan</a></li>
             </ul>
           </li>  
           <li class="treeview">

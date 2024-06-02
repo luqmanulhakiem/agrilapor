@@ -5,11 +5,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data OperArea
+        Data Bibit
       </h1>
       <br>
       <ol class="breadcrumb">
-        <a href="{{route('operarea.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+        <a href="{{route('bibit.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
       </ol>
     </section>
 
@@ -19,7 +19,7 @@
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Data OperArea</h3>
+                <h3 class="box-title">Data Bibit</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -47,9 +47,9 @@
                                 <td class="text-center">
                                     @if (Auth::user()->role == 'admin')
                                         <div class="btn-group">
-                                            <a href="{{route('operarea.edit', ["id" => $item->id])}}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-                                            <a href="{{route('operarea.destroy', ["id" => $item->id])}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Hapus</a>
-                                            <a href="{{route('operarea.status', ["id" => $item->id])}}" class="btn btn-sm btn-success"><i class="fa fa-check"></i> Approve</a>
+                                            <a href="{{route('bibit.edit', ["id" => $item->id])}}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Edit</a>
+                                            <a href="{{route('bibit.destroy', ["id" => $item->id])}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+                                            <a href="{{route('bibit.status', ["id" => $item->id])}}" class="btn btn-sm btn-success"><i class="fa fa-check"></i> Approve</a>
                                         </div>
                                     @endif
                                     @if (Auth::user()->role == 'user')
