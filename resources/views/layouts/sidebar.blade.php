@@ -64,9 +64,11 @@
               <?php 
                 $carbon = \Illuminate\Support\Carbon::now(); 
                 $today = $carbon->format('Y-m-d');
+                $month = $carbon->format('m');
+                $year = $carbon->format('Y');
               ?>
               <li class="{{ Request::is('tabur-benih/rekap-harian/*') ? 'active' : '' }}"><a href="{{route('taburbenih.harian', ["tanggal" => $today])}}"><i class="fa fa-circle-o"></i> Rekap Harian</a></li>
-              <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Rekap Bulanan</a></li>
+              <li class="{{ Request::is('tabur-benih/rekap-bulanan/*') ? 'active' : '' }}"><a href="{{route('taburbenih.bulanan', ["bulan" => $month, 'tahun' => $year])}}"><i class="fa fa-circle-o"></i> Rekap Bulanan</a></li>
             </ul>
           </li>  
           <li class="treeview">

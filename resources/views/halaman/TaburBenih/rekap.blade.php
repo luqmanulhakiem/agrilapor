@@ -20,22 +20,57 @@
           <div class="box">
             <div class="box-header">
               <div class="row">
-                <div class="col-md-2">
-                  <div class="form-group mr-2">
-                    <label for="label">Filter</label>
-                        <input type="date" name="tanggal" id="tanggal" value="{{$today}}" class="form-control" />
+                @if (Request::is('tabur-benih/rekap-harian/*'))
+                  <div class="col-md-2">
+                    <div class="form-group mr-2">
+                      <label for="label">Filter</label>
+                          <input type="date" name="tanggal" id="tanggal" value="{{$today}}" class="form-control" />
+                      </div>
                     </div>
+                    <div class="col-md-2">
+                      <div class="form-group">
+                          <label for="">Lihat</label>
+                          <a href="" onclick="this.href='/tabur-benih/rekap-harian/'+ document.getElementById('tanggal').value " 
+                          class="btn btn-primary col-md-12">
+                              Lihat
+                          </a>
+                      </div>
+                  </div>
+                @endif
+
+                @if (Request::is('tabur-benih/rekap-bulanan/*'))
+                  <div class="col-md-2">
+                    <label for="month">Bulan:</label>
+                    <select class="form-control" name="bulan" id="bulan">
+                        @for ($i = 1; $i <= 12; $i++)
+                            <option value="{{ $i }}" {{ old('month', $bulan) == $i ? 'selected' : '' }}>
+                              {{ \Carbon\Carbon::create()->locale('id')->month($i)->translatedFormat('F') }}
+                            </option>
+                        @endfor
+                    </select>
+                  </div>
+                  <div class="col-md-2">
+                    <label for="year">Tahun:</label>
+                    <select class="form-control" name="tahun" id="tahun">
+                        @for ($i = 2020; $i <= \Carbon\Carbon::now()->year; $i++)
+                            <option value="{{ $i }}" {{ old('year', $tahun) == $i ? 'selected' : '' }}>
+                                {{ $i }}
+                            </option>
+                        @endfor
+                    </select>
                   </div>
                   <div class="col-md-2">
                     <div class="form-group">
-                        <label for="">Lihat</label>
-                        <a href="" onclick="this.href='/tabur-benih/rekap-harian/'+ document.getElementById('tanggal').value " 
-                        class="btn btn-primary col-md-12">
-                            Lihat
-                        </a>
-                    </div>
+                      <label for="">Lihat</label>
+                      <a onclick="this.href='/tabur-benih/rekap-bulanan/'+ document.getElementById('bulan').value + 
+                      '/' + document.getElementById('tahun').value " 
+                      class="btn btn-primary col-md-12">
+                          Lihat
+                      </a>
+                  </div>
+                  </div>
+                @endif
 
-                </div>
               </div>
             </div>
             <div class="box-header with-border">

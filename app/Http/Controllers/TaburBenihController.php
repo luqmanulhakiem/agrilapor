@@ -32,6 +32,13 @@ class TaburBenihController extends Controller
         return view('halaman.TaburBenih.rekap', compact('data', 'today'));
     }
 
+    public function bulanan(string $bulan, string $tahun){
+
+        $data = TaburBenih::where('status', 'verified')->whereMonth('created_at', $bulan)->whereYear('created_at', $tahun)->latest()->paginate(50);
+
+        return view('halaman.TaburBenih.rekap', compact('data', 'bulan', 'tahun'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

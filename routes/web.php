@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth']], function (){
             Route::get('index', 'index')->name('taburbenih.index');
             Route::get('verifikasi', 'verifikasi')->name('taburbenih.verifikasi');
             Route::get('rekap-harian/{tanggal}', 'harian')->name('taburbenih.harian');
+            Route::get('rekap-bulanan/{bulan}/{tahun}', 'bulanan')->name('taburbenih.bulanan');
             Route::get('create', 'create')->name('taburbenih.create');
             Route::post('store', 'store')->name('taburbenih.store');
             Route::get('status/{id}', 'status')->name('taburbenih.status');
