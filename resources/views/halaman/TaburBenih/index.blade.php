@@ -53,7 +53,11 @@
                                         </div>
                                     @endif
                                     @if (Auth::user()->role == 'user')
-                                        <span class="badge bg-yellow">{{$item->status}}</span>
+                                        @if ($item->status == 'pending')
+                                            <span class="badge bg-yellow">{{$item->status}}</span>
+                                        @else
+                                            <span class="badge bg-green">{{$item->status}}</span>
+                                        @endif
                                     @endif
                                 </td>
                             </tr>
