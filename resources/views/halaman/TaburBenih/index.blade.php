@@ -31,9 +31,6 @@
                       <th>Rencana</th>
                       <th>Realisasi</th>
                       <th style="width: 40px">%</th>
-                      @if (Auth::user()->role == 'admin')
-                      <th>Status</th>
-                      @endif
                       <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
@@ -47,15 +44,6 @@
                                 <td>{{$item->rencana}}</td>
                                 <td>{{$item->realisasi}}</td>
                                 <td><span class="badge bg-red">{{$item->persentase}}</span></td>
-                                @if (Auth::user()->role == 'admin')
-                                    <td class="text-center">
-                                        @if ($item->status == 'verified')
-                                            <span class="badge bg-green">{{$item->status}}</span>
-                                        @else
-                                            <span class="badge bg-yellow">{{$item->status}}</span>
-                                        @endif
-                                    </td>
-                                @endif
                                 <td class="text-center">
                                     @if (Auth::user()->role == 'admin')
                                         <div class="btn-group">
