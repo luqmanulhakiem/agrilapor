@@ -26,6 +26,7 @@ Route::group(['middleware' => ['auth']], function (){
         Route::prefix('tabur-benih')->group(function () {
             Route::get('index', 'index')->name('taburbenih.index');
             Route::get('create', 'create')->name('taburbenih.create');
+            Route::post('store', 'store')->name('taburbenih.store');
         });
     });
 });

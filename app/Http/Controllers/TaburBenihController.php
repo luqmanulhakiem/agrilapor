@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TambahDataRequest;
 use App\Models\TaburBenih;
 use Illuminate\Http\Request;
 
@@ -28,9 +29,13 @@ class TaburBenihController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TambahDataRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        TaburBenih::create($data);
+
+        return redirect()->route('taburbenih.index');
     }
 
     /**
