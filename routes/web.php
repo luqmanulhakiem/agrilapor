@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TaburBenihController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +20,11 @@ Route::group(['middleware' => ['auth']], function (){
     Route::get('/dashboard', function () {
         return view('halaman.Dashboard.index');
     })->name('dashboard');
+
+    // Tabur Benih
+    Route::controller(TaburBenihController::class)->group(function (){
+        Route::prefix('tabur-benih')->group(function () {
+            Route::get('index', 'index')->name('taburbenih.index');
+        });
+    });
 });

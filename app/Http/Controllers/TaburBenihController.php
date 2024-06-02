@@ -12,7 +12,9 @@ class TaburBenihController extends Controller
      */
     public function index()
     {
-        //
+        $data = TaburBenih::latest()->paginate(50);
+        
+        return view('halaman.TaburBenih.index', compact('data'));
     }
 
     /**

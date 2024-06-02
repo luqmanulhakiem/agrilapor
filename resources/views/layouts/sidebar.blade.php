@@ -7,7 +7,7 @@
         <li class="{{ Request::is('dashboard') ? 'active' : '' }}"><a href="#"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
 
         @if (Auth::user()->role == 'user')
-          <li class="treeview">
+          <li class="{{ Request::is('tabur-benih/*') ? 'active' : '' }} treeview">
             <a href="#">
               <i class="fa fa-archive"></i> <span>Persemaian</span>
               <span class="pull-right-container">
@@ -15,7 +15,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class=""><a href="index.html"><i class="fa fa-circle-o"></i> Tabur Benih</a></li>
+              <li class="{{ Request::is('tabur-benih/*') ? 'active' : '' }}"><a href="{{route('taburbenih.index')}}"><i class="fa fa-circle-o"></i> Tabur Benih</a></li>
               <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Over Spin</a></li>
               <li class=""><a href="index2.html"><i class="fa fa-circle-o"></i> Oper Area</a></li>
             </ul>
