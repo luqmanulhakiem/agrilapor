@@ -7,6 +7,7 @@ use App\Http\Controllers\LubangTanamController;
 use App\Http\Controllers\OperAreaController;
 use App\Http\Controllers\OverSpinController;
 use App\Http\Controllers\TaburBenihController;
+use App\Http\Controllers\TanamController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -126,6 +127,23 @@ Route::group(['middleware' => ['auth']], function (){
             Route::get('edit/{id}', 'edit')->name('lubangtanam.edit');
             Route::post('update/{id}', 'update')->name('lubangtanam.update');
             Route::get('destroy/{id}', 'destroy')->name('lubangtanam.destroy');
+        });
+    });
+    // Tanam
+    Route::controller(TanamController::class)->group(function (){
+        Route::prefix('tanam')->group(function () {
+            Route::get('index', 'index')->name('tanam.index');
+            Route::get('verifikasi', 'verifikasi')->name('tanam.verifikasi');
+            Route::get('rekap-harian/{tanggal}', 'harian')->name('tanam.harian');
+            Route::get('download-harian/{tanggal}', 'downloadHarian')->name('tanam.harian.download');
+            Route::get('rekap-bulanan/{bulan}/{tahun}', 'bulanan')->name('tanam.bulanan');
+            Route::get('download-bulanan/{bulan}/{tahun}', 'downloadBulanan')->name('tanam.bulanan.download');
+            Route::get('create', 'create')->name('tanam.create');
+            Route::post('store', 'store')->name('tanam.store');
+            Route::get('status/{id}', 'status')->name('tanam.status');
+            Route::get('edit/{id}', 'edit')->name('tanam.edit');
+            Route::post('update/{id}', 'update')->name('tanam.update');
+            Route::get('destroy/{id}', 'destroy')->name('tanam.destroy');
         });
     });
 });
