@@ -44,6 +44,14 @@ class TaburBenihController extends Controller
         return redirect()->route('taburbenih.index');
     }
 
+    public function status(string $id){
+        $data = TaburBenih::findorfail($id);
+        $data->update([
+            'status' => 'verified'
+        ]);
+        return redirect()->route('taburbenih.verifikasi');
+    }
+
     /**
      * Display the specified resource.
      */
