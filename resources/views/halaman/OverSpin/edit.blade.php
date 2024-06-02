@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Edit Data Tabur Benih
+        Edit Data OverSpin
       </h1>
     </section>
 
@@ -21,7 +21,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="{{route('taburbenih.update', ['id' => $data->id])}}" method="POST">
+            <form role="form" action="{{route('overspin.update', ['id' => $data->id])}}" method="POST">
                 @csrf
                 @if ($errors->any())
                     <div class="pt-4 pb-2">

@@ -75,7 +75,7 @@ class OverSpinController extends Controller
 
         OverSpin::create($data);
 
-        return redirect()->route('OverSpin.index');
+        return redirect()->route('overspin.index');
     }
 
     public function status(string $id){
@@ -83,7 +83,7 @@ class OverSpinController extends Controller
         $data->update([
             'status' => 'verified'
         ]);
-        return redirect()->route('OverSpin.verifikasi');
+        return redirect()->route('overspin.verifikasi');
     }
 
     /**
@@ -114,7 +114,7 @@ class OverSpinController extends Controller
         $find = OverSpin::findorfail($id);
         $find->update($data);
 
-        return redirect()->route('OverSpin.verifikasi');
+        return redirect()->route('overspin.verifikasi');
     }
 
     /**
@@ -125,6 +125,6 @@ class OverSpinController extends Controller
         $data = OverSpin::findorfail($id);
         $data->delete();
 
-        return redirect()->route('OverSpin.verifikasi');
+        return redirect()->route('overspin.verifikasi');
     }
 }

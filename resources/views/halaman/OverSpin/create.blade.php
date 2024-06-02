@@ -5,7 +5,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Tambah Data Tabur Benih
+        Tambah Data OverSpin
       </h1>
     </section>
 
@@ -21,7 +21,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="{{route('taburbenih.store')}}" method="POST">
+            <form role="form" action="{{route('overspin.store')}}" method="POST">
                 @csrf
                 @if ($errors->any())
                     <div class="pt-4 pb-2">

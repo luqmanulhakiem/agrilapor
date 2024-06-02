@@ -5,24 +5,24 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        @if (Request::is('tabur-benih/rekap-bulanan/*'))
-          Rekap Bulanan Data Tabur Benih
+        @if (Request::is('over-spin/rekap-bulanan/*'))
+          Rekap Bulanan Data Overspin
         @else
-          Rekap Harian Data Tabur Benih
+          Rekap Harian Data Overspin
         @endif
       </h1>
       <br>
       <ol class="breadcrumb">
-        @if (Request::is('tabur-benih/rekap-bulanan/*'))
+        @if (Request::is('over-spin/rekap-bulanan/*'))
           <a  
-          onclick="this.href='/tabur-benih/download-bulanan/' + document.getElementById('bulan').value + 
+          onclick="this.href='/over-spin/download-bulanan/' + document.getElementById('bulan').value + 
           '/' + document.getElementById('tahun').value; this.target='_blank'" 
           class="btn btn-success"><i class="fa fa-plus"></i> 
             Download Laporan
           </a>
         @else
           <a  
-          onclick="this.href='/tabur-benih/download-harian/'+ document.getElementById('tanggal').value; this.target='_blank'" 
+          onclick="this.href='/over-spin/download-harian/'+ document.getElementById('tanggal').value; this.target='_blank'" 
           class="btn btn-success"><i class="fa fa-plus"></i> 
             Download Laporan
           </a>
@@ -37,7 +37,7 @@
           <div class="box">
             <div class="box-header">
               <div class="row">
-                @if (Request::is('tabur-benih/rekap-harian/*'))
+                @if (Request::is('over-spin/rekap-harian/*'))
                   <div class="col-md-2">
                     <div class="form-group mr-2">
                       <label for="label">Filter</label>
@@ -47,7 +47,7 @@
                     <div class="col-md-2">
                       <div class="form-group">
                           <label for="">Lihat</label>
-                          <a href="" onclick="this.href='/tabur-benih/rekap-harian/'+ document.getElementById('tanggal').value " 
+                          <a href="" onclick="this.href='/over-spin/rekap-harian/'+ document.getElementById('tanggal').value " 
                           class="btn btn-primary col-md-12">
                               Lihat
                           </a>
@@ -55,7 +55,7 @@
                   </div>
                 @endif
 
-                @if (Request::is('tabur-benih/rekap-bulanan/*'))
+                @if (Request::is('over-spin/rekap-bulanan/*'))
                   <div class="col-md-2">
                     <label for="month">Bulan:</label>
                     <select class="form-control" name="bulan" id="bulan">
@@ -79,7 +79,7 @@
                   <div class="col-md-2">
                     <div class="form-group">
                       <label for="">Lihat</label>
-                      <a onclick="this.href='/tabur-benih/rekap-bulanan/'+ document.getElementById('bulan').value + 
+                      <a onclick="this.href='/over-spin/rekap-bulanan/'+ document.getElementById('bulan').value + 
                       '/' + document.getElementById('tahun').value " 
                       class="btn btn-primary col-md-12">
                           Lihat
@@ -92,10 +92,10 @@
             </div>
             <div class="box-header with-border">
               <h3 class="box-title">
-                @if (Request::is('tabur-benih/rekap-bulanan/*'))
-                  Rekap Bulanan Data Tabur Benih
+                @if (Request::is('over-spin/rekap-bulanan/*'))
+                  Rekap Bulanan Data Overspin
                 @else
-                  Rekap Harian Data Tabur Benih
+                  Rekap Harian Data Overspin
                 @endif
               </h3>
             </div>
