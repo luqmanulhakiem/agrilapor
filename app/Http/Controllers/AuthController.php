@@ -25,4 +25,10 @@ class AuthController extends Controller
             return redirect()->back()->withInput()->withErrors(['message' => 'username anda salah']);
         }
     }
+
+    public function logout(){
+        Auth::logout();
+
+        return redirect()->route('login');
+    }
 }
