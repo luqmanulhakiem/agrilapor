@@ -31,6 +31,9 @@
                       <th>Rencana</th>
                       <th>Realisasi</th>
                       <th style="width: 40px">%</th>
+                      @if (Auth::user()->role == 'admin')
+                        <th>Status</th>
+                      @endif
                       <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
@@ -44,12 +47,23 @@
                                 <td>{{$item->rencana}}</td>
                                 <td>{{$item->realisasi}}</td>
                                 <td><span class="badge bg-red">{{$item->persentase}}%</span></td>
+                                @if (Auth::user()->role == 'admin')
+                                  <td>
+                                    @if ($item->status == 'pending')
+                                        <span class="badge bg-yellow">{{$item->status}}</span>
+                                    @else
+                                        <span class="badge bg-green">{{$item->status}}</span>
+                                    @endif
+                                  </td>
+                                @endif
                                 <td class="text-center">
                                     @if (Auth::user()->role == 'admin')
                                         <div class="btn-group">
                                             <a href="{{route('babat.edit', ["id" => $item->id])}}" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i> Edit</a>
                                             <a href="{{route('babat.destroy', ["id" => $item->id])}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Hapus</a>
-                                            <a href="{{route('babat.status', ["id" => $item->id])}}" class="btn btn-sm btn-success"><i class="fa fa-check"></i> Approve</a>
+                                            @if ($item->status == 'pending')
+                                              <a href="{{route('babat.status', ["id" => $item->id])}}" class="btn btn-sm btn-success"><i class="fa fa-check"></i> Approve</a>
+                                            @endif
                                         </div>
                                     @endif
                                     @if (Auth::user()->role == 'user')

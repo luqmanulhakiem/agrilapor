@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TambahDataRequest;
+use App\Models\Laporan;
 use App\Models\OverSpin;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class OverSpinController extends Controller
     }
 
     public function verifikasi(){
-        $data = OverSpin::where('status', 'pending')->latest()->paginate(50);
+        $data = OverSpin::latest()->paginate(50);
 
         return view('halaman.OverSpin.index', compact('data'));
     }
@@ -29,14 +30,14 @@ class OverSpinController extends Controller
     public function harian(string $tanggal){
         $today = $tanggal;
 
-        $data = OverSpin::where('status', 'verified')->whereDate('created_at', $tanggal)->latest()->paginate(50);
+        $data = Laporan::where('data', 'OverSpin')->where('status', 'verified')->whereDate('updated_at', $tanggal)->orderBy('updated_at', 'desc')->latest()->paginate(50);
 
         return view('halaman.OverSpin.rekap', compact('data', 'today'));
     }
     public function downloadHarian(string $tanggal){
         $today = $tanggal;
         
-        $data = OverSpin::where('status', 'verified')->whereDate('created_at', $tanggal)->latest()->get();
+        $data = Laporan::where('data', 'OverSpin')->where('status', 'verified')->whereDate('updated_at', $tanggal)->orderBy('updated_at', 'desc')->latest()->get();
         $nama = 'Laporan Harian-' . $tanggal . '.pdf';
 
         $pdf = PDF::loadView('pdf.harian', ['today' => $today, 'data' => $data]); //i want send $data to $html
@@ -45,13 +46,13 @@ class OverSpinController extends Controller
 
     public function bulanan(string $bulan, string $tahun){
 
-        $data = OverSpin::where('status', 'verified')->whereMonth('created_at', $bulan)->whereYear('created_at', $tahun)->latest()->paginate(50);
+        $data = Laporan::where('data', 'OverSpin')->where('status', 'verified')->whereMonth('updated_at', $bulan)->whereYear('updated_at', $tahun)->orderBy('updated_at', 'desc')->latest()->paginate(50);
 
         return view('halaman.OverSpin.rekap', compact('data', 'bulan', 'tahun'));
     }
 
     public function downloadBulanan(string $bulan, string $tahun){
-        $data = OverSpin::where('status', 'verified')->whereMonth('created_at', $bulan)->whereYear('created_at', $tahun)->latest()->paginate(50);
+        $data = Laporan::where('data', 'OverSpin')->where('status', 'verified')->whereMonth('updated_at', $bulan)->whereYear('updated_at', $tahun)->orderBy('updated_at', 'desc')->latest()->paginate(50);
         
         $nama = 'Laporan Bulanan-' . $bulan . '-' . $tahun . '.pdf';
 
@@ -88,6 +89,14 @@ class OverSpinController extends Controller
         $data->update([
             'status' => 'verified'
         ]);
+        Laporan::create([
+            'jenis' => $data['jenis'],
+            'rencana' => $data['rencana'],
+            'realisasi' => $data['realisasi'],
+            'persentase' => $data['persentase'],
+            'status' => 'verified',
+            'data' => 'OverSpin',
+        ]);
         return redirect()->route('overspin.verifikasi');
     }
 
@@ -118,6 +127,16 @@ class OverSpinController extends Controller
 
         $find = OverSpin::findorfail($id);
         $find->update($data);
+        if ($find->status == 'verified') {
+            Laporan::create([
+                'jenis' => $data['jenis'],
+                'rencana' => $data['rencana'],
+                'realisasi' => $data['realisasi'],
+                'persentase' => $data['persentase'],
+                'status' => 'verified',
+                'data' => 'OverSpin',
+            ]);
+        }
 
         return redirect()->route('overspin.verifikasi');
     }
