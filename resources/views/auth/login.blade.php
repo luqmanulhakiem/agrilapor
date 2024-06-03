@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Website Laporan Tanaman Petani | Log in</title>
+  <title>Website Laporan Tanaman Perhutani | Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -26,7 +26,7 @@
 </head>
 <body class="hold-transition login-page">
   <div class="login-logo">
-    <h2 href=""><b>Website Laporan Tanaman Petani</b></h2>
+    <h2 href=""><b>Website Laporan Tanaman Perhutani</b></h2>
     <img src="{{asset('dist/img/avatar5.png')}}" alt="">
   </div>
 <div class="login-box" style="margin-top: -10px !important;">
