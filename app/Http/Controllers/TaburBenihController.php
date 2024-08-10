@@ -76,6 +76,8 @@ class TaburBenihController extends Controller
     public function store(TambahDataRequest $request)
     {
         $data = $request->validated();
+        $data['persentase'] =  ((int)$data['realisasi'] /  (int)$data['rencana']) *  100;
+
 
         TaburBenih::create($data);
 
@@ -126,6 +128,8 @@ class TaburBenihController extends Controller
     public function update(TambahDataRequest $request, string $id)
     {
         $data = $request->validated();
+        $data['persentase'] =  ((int)$data['realisasi'] /  (int)$data['rencana']) *  100;
+
 
         $find = TaburBenih::findorfail($id);
         $find->update($data);
@@ -135,7 +139,7 @@ class TaburBenihController extends Controller
                 'jenis' => $data['jenis'],
                 'rencana' => $data['rencana'],
                 'realisasi' => $data['realisasi'],
-                'persentase' => $data['persentase'],
+                'persentase' => $data['persentase'] =  ((int)$data['realisasi'] /  (int)$data['rencana']) *  100,
                 'status' => $find->status,
                 'data' => 'TaburBenih',
             ]);

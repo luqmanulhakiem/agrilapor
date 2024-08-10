@@ -43,10 +43,10 @@
                   <label>Realisasi</label>
                   <input type="text" class="form-control" name="realisasi" placeholder="Masukkan Realisasi" required>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                   <label>Persentase</label>
                   <input type="number" class="form-control" name="persentase" placeholder="Masukkan Persentase" required>
-                </div>
+                </div> --}}
               </div>
               <!-- /.box-body -->
 

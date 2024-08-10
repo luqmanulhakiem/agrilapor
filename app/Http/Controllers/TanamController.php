@@ -74,6 +74,8 @@ class TanamController extends Controller
     public function store(TambahDataRequest $request)
     {
         $data = $request->validated();
+        $data['persentase'] =  ((int)$data['realisasi'] /  (int)$data['rencana']) *  100;
+
 
         Tanam::create($data);
 
@@ -124,6 +126,8 @@ class TanamController extends Controller
     public function update(TambahDataRequest $request, string $id)
     {
         $data = $request->validated();
+        $data['persentase'] =  ((int)$data['realisasi'] /  (int)$data['rencana']) *  100;
+
 
         $find = Tanam::findorfail($id);
         $find->update($data);
@@ -132,7 +136,7 @@ class TanamController extends Controller
                 'jenis' => $data['jenis'],
                 'rencana' => $data['rencana'],
                 'realisasi' => $data['realisasi'],
-                'persentase' => $data['persentase'],
+                'persentase' => ((int)$data['realisasi'] /  (int)$data['rencana']) *  100,
                 'status' => 'verified',
                 'data' => 'Tanam',
             ]);

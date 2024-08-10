@@ -74,6 +74,8 @@ class BibitController extends Controller
     public function store(TambahDataRequest $request)
     {
         $data = $request->validated();
+        $data['persentase'] =  ((int)$data['realisasi'] /  (int)$data['rencana']) *  100;
+
 
         Bibit::create($data);
 
@@ -126,6 +128,8 @@ class BibitController extends Controller
     public function update(TambahDataRequest $request, string $id)
     {
         $data = $request->validated();
+        $data['persentase'] =  ((int)$data['realisasi'] /  (int)$data['rencana']) *  100;
+
 
         $find = Bibit::findorfail($id);
         $find->update($data);
@@ -134,7 +138,7 @@ class BibitController extends Controller
                 'jenis' => $data['jenis'],
                 'rencana' => $data['rencana'],
                 'realisasi' => $data['realisasi'],
-                'persentase' => $data['persentase'],
+                'persentase' => ((int)$data['realisasi'] /  (int)$data['rencana']) *  100,
                 'status' => 'verified',
                 'data' => 'Bibit',
             ]);

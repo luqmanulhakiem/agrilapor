@@ -25,7 +25,7 @@ class TambahDataRequest extends FormRequest
             'jenis' => 'required',
             'rencana' => 'required',
             'realisasi' => 'required',
-            'persentase' => 'required',
+            'persentase' => '',
         ];
     }
 }

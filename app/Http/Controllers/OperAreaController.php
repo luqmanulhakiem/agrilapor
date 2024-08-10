@@ -74,6 +74,7 @@ class OperAreaController extends Controller
     public function store(TambahDataRequest $request)
     {
         $data = $request->validated();
+        $data['persentase'] =  ((int)$data['realisasi'] /  (int)$data['rencana']) *  100;
 
         OperArea::create($data);
         if (Auth::user()->role == 'user') {
@@ -123,6 +124,8 @@ class OperAreaController extends Controller
     public function update(TambahDataRequest $request, string $id)
     {
         $data = $request->validated();
+        $data['persentase'] =  ((int)$data['realisasi'] /  (int)$data['rencana']) *  100;
+
 
         $find = OperArea::findorfail($id);
         $find->update($data);
@@ -131,7 +134,7 @@ class OperAreaController extends Controller
                 'jenis' => $data['jenis'],
                 'rencana' => $data['rencana'],
                 'realisasi' => $data['realisasi'],
-                'persentase' => $data['persentase'],
+                'persentase' => $data['persentase'] =  ((int)$data['realisasi'] /  (int)$data['rencana']) *  100,
                 'status' => 'verified',
                 'data' => 'OperArea',
             ]);
